@@ -144,7 +144,7 @@ namespace AmoPatass.Migrations
                     b.Property<int>("IdCatetegoria")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdDoador")
+                    b.Property<int>("IdPessoa")
                         .HasColumnType("int");
 
                     b.Property<int>("IdPorte")
@@ -160,9 +160,6 @@ namespace AmoPatass.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("IdSituacao")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdTutor")
                         .HasColumnType("int");
 
                     b.Property<int>("Idade")

@@ -5,8 +5,6 @@ namespace AmoPatass
 {
     public class Pets
     {
-        [Key]
-        [Required]
         public int IdAnimal { get; set; }//pk
         public string nmAnimal { get; set; }
         public string dsAnimal { get; set; }

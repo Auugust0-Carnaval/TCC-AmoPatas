@@ -4,7 +4,6 @@ namespace AmoPatass
 {
     public class Pessoas
     {
-        [Key]
         public int idPessoa { get; set; }
         public string nmPessoa { get; set; }
         public string Email { get; set; }

@@ -24,7 +24,10 @@ namespace AmoPatass.Data
          protected override void OnModelCreating(ModelBuilder modelBuilder)
          {
              modelBuilder.Entity<AnimaisFoto>()
-                .HasKey(a => new{a.IdAnimal});
+                .HasKey(a => new{a.IdAnimal})
+                .HasRequired(c => c.Stage)
+                .WithMany()
+                .WillCascadeOnDelete(false)
 
              modelBuilder.Entity<Categoria>()
                 .HasKey(c => new{c.IdCatetegoria});
@@ -52,7 +55,10 @@ namespace AmoPatass.Data
 
             modelBuilder.Entity<Situacoes>()
                 .HasKey(st => new{st.IdSituacao});
-            
+
+            modelBuilder.Entity<Porte>()
+                .HasKey(por => new {por.IdPorte});
+
             modelBuilder.Entity<Preferencias>
             (eb =>
                 {

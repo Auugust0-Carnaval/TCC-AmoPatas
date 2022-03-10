@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AmoPatass.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220310041819_FirstMigrationn")]
+    [Migration("20220310185231_FirstMigrationn")]
     partial class FirstMigrationn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -146,7 +146,7 @@ namespace AmoPatass.Migrations
                     b.Property<int>("IdCatetegoria")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdDoador")
+                    b.Property<int>("IdPessoa")
                         .HasColumnType("int");
 
                     b.Property<int>("IdPorte")
@@ -162,9 +162,6 @@ namespace AmoPatass.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("IdSituacao")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdTutor")
                         .HasColumnType("int");
 
                     b.Property<int>("Idade")
