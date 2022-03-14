@@ -23,16 +23,19 @@ namespace AmoPatass.Data
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
          {
-             modelBuilder.Entity<AnimaisFoto>()
-                .HasKey(a => new{a.IdAnimal})
-                .HasRequired(c => c.Stage)
+            
+            modelBuilder.Entity<AnimaisFoto>()
+                .HasOne<Pets>()
                 .WithMany()
-                .WillCascadeOnDelete(false)
+                .HasForeignKey(p => p.IdAnimal);
 
-             modelBuilder.Entity<Categoria>()
+            modelBuilder.Entity<AnimaisFoto>()
+                .HasKey(anf => new {anf.IdAnimalFoto});
+
+            modelBuilder.Entity<Categoria>()
                 .HasKey(c => new{c.IdCatetegoria});
 
-             modelBuilder.Entity<Interessados>()
+            modelBuilder.Entity<Interessados>()
                 .HasKey(i => new{i.IdPessoa, i.idAnimal});
 
             modelBuilder.Entity<PessoaFoto>()

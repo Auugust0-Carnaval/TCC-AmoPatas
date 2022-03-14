@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace AmoPatass
 {
     public class Preferencias

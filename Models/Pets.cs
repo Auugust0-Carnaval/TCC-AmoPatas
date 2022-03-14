@@ -32,5 +32,7 @@ namespace AmoPatass
 
         public Sexo Sexo { get; set; }
         public int IdSexo { get; set; }
+
+        public List<AnimaisFoto> AnimaisFotos {get; set;}
     }
 }
