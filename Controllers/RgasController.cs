@@ -31,6 +31,22 @@ namespace AmoPatass.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(Rga newRga)
+        {
+            try
+            {
+                await _context.Rgas.AddAsync(newRga);
+                await _context.SaveChangesAsync();
+                return Ok(newRga.IdRga);
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+        }
         
     }
 }
