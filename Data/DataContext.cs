@@ -8,7 +8,6 @@ namespace AmoPatass.Data
         {
             
         }  
-
          public DbSet<AnimaisFoto> AnimaisFotos { get; set; }
          public DbSet<Categoria> Categorias { get; set; }
          public DbSet<Interessados> Interessados { get; set; }
