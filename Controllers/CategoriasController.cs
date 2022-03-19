@@ -17,7 +17,7 @@ namespace AmoPatass
             _httpContextoAccessor = httpContextAccessor;
         }
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetAsync()
         {
             try
@@ -27,6 +27,21 @@ namespace AmoPatass
                 if(c.Count == 0 )
                     throw new System.Exception("Não foi encontado nenhuma categoria :(");
                 return Ok(c);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(Categoria newCategoria)
+        {
+            try
+            {
+                await _context.Categorias.AddAsync(newCategoria);
+                await _context.SaveChangesAsync();
+                return Ok(string.Format("Categoria: {0} com Id: {1} , adicionada com sucesso", newCategoria.dsCategoria, newCategoria.IdCategoria));
             }
             catch (System.Exception ex)
             {
