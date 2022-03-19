@@ -8,16 +8,16 @@ namespace AmoPatass.Data
         {
             
         }  
-         public DbSet<AnimaisFoto> AnimaisFotos { get; set; }
+         public DbSet<AnimaisFoto> AnimaisFoto { get; set; }
+         public DbSet<PessoaFoto> PessoasFotos {get; set;}
          public DbSet<Categoria> Categorias { get; set; }
          public DbSet<Interessados> Interessados { get; set; }
          public DbSet<Pessoas> Pessoas { get; set; }
          public DbSet<Pets> Pets { get; set; }
-         public DbSet<Porte> Portes { get; set; }
+         public DbSet<Porte> Porte { get; set; }
          public DbSet<Preferencias> Preferencias { get; set; }
          public DbSet<Racas> Racas { get; set; }
-         public DbSet<Rga> Rgas { get; set; }
-         public DbSet<Sexo> Sexos { get; set; }
+         public DbSet<Sexo> Sexo { get; set; }
          public DbSet<Situacoes> Situacoes { get; set; }
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -32,13 +32,11 @@ namespace AmoPatass.Data
                 .HasKey(anf => new {anf.IdAnimalFoto});
 
             modelBuilder.Entity<Categoria>()
-                .HasKey(c => new{c.IdCatetegoria});
+                .HasKey(c => new{c.IdCategoria});
 
             modelBuilder.Entity<Interessados>()
                 .HasKey(i => new{i.IdPessoa, i.idAnimal});
 
-            modelBuilder.Entity<PessoaFoto>()
-                .HasKey(pf => new{pf.IdPessoa});
 
             modelBuilder.Entity<Pessoas>()
                 .HasKey(p => new{p.idPessoa});
@@ -49,8 +47,6 @@ namespace AmoPatass.Data
             modelBuilder.Entity<Racas>()
                 .HasKey(r => new{r.IdRaca});
 
-            modelBuilder.Entity<Rga>()
-                .HasKey(rg => new{rg.IdRga});
             
             modelBuilder.Entity<Sexo>()
                 .HasKey(s => new{s.IdSexo});
@@ -62,9 +58,16 @@ namespace AmoPatass.Data
                 .HasKey(por => new {por.IdPorte});
 
             modelBuilder.Entity<Preferencias>
-            (eb =>
+            (pr =>
                 {
-                    eb.HasNoKey();
+                    pr.HasNoKey();
+                }
+            );
+
+            modelBuilder.Entity<PessoaFoto>
+            (pf =>
+                {
+                    pf.HasNoKey();
                 }
             );
          }

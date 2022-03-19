@@ -4,7 +4,8 @@ namespace AmoPatass
 {
     public class Categoria
     {
-        public int IdCatetegoria { get; set; }
+        public int IdCategoria { get; set; }
+        public string  dsCategoria { get; set; }
         
     }
 }

@@ -1,3 +1,5 @@
+using System;
+
 namespace AmoPatass
 {
     public class Interessados
@@ -6,6 +8,7 @@ namespace AmoPatass
         public int IdPessoa { get; set; }
         public Pets Pets { get; set; }
         public int idAnimal { get; set; }
+        public DateTime dtInteresse { get; set; }
         
     }
 }
