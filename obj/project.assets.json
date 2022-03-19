@@ -2200,19 +2200,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Augus\\.nuget\\packages\\": {}
+    "C:\\Users\\Carlos\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\AmoPatass\\AmoPatass.csproj",
+      "projectUniqueName": "C:\\Users\\Carlos\\Desktop\\TCC-AmoPatas\\AmoPatass.csproj",
       "projectName": "AmoPatass",
-      "projectPath": "C:\\AmoPatass\\AmoPatass.csproj",
-      "packagesPath": "C:\\Users\\Augus\\.nuget\\packages\\",
-      "outputPath": "C:\\AmoPatass\\obj\\",
+      "projectPath": "C:\\Users\\Carlos\\Desktop\\TCC-AmoPatas\\AmoPatass.csproj",
+      "packagesPath": "C:\\Users\\Carlos\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Carlos\\Desktop\\TCC-AmoPatas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Augus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Carlos\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
