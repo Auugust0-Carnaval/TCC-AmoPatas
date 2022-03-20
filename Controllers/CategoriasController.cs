@@ -1,3 +1,4 @@
+using System.Data;
 using AmoPatass.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -54,20 +55,21 @@ namespace AmoPatass
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpAsync(Categoria UpCategoria, string name)
+        public async Task<IActionResult> UpAsync(Categoria UpCategoria)
         {
             try
             {
+                //string de conexao na variavel stconction
                String stconection = "Data Source= workstation id=DB-DS-AMOPATAS.mssql.somee.com;packet size=4096;user id=saaugustocarnaval;pwd=123456789;data source=DB-DS-AMOPATAS.mssql.somee.com;persist security info=False;initial catalog=DB-DS-AMOPATAS";
                SqlConnection connection = new SqlConnection(stconection);
-               SqlCommand cmd = new SqlCommand("SELECT dsCategoria FROM Pessoas", connection);
-               connection.Open();
-               cmd.ExecuteNonQuery();
-              
-
-                _context.Categorias.Update(UpCategoria);
-                int linhaAfetadas = await _context.SaveChangesAsync();
-                return Ok(string.Format("A categoria : " + cmd + " foi alterada para:" + UpCategoria));
+               string sql = string.Format("SELECT dsCategoria FROM Categorias WHERE IdCategoria = {0}", UpCategoria.IdCategoria);
+               connection.Open(); //abrindo conexao com a variavel instanciada com a string de conexao
+               SqlCommand cmd = new SqlCommand(sql,connection); // buscando dsCategoria para colocar no StringFormat
+               string nameCategory = Convert.ToString(cmd.ExecuteScalar()); // execudando comando e colocando valor de busca na variavel nameCategory
+            
+               _context.Categorias.Update(UpCategoria);
+               int linhaAfetadas = await _context.SaveChangesAsync();
+               return Ok(string.Format("A categoria {0}, foi alterada para {1}!",nameCategory, UpCategoria.dsCategoria ));
             }
             catch (System.Exception ex)
             {
