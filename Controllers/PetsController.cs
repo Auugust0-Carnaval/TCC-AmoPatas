@@ -21,7 +21,7 @@ namespace TCC_AmoPatas
         }
 
         [HttpGet]
-        //GetAl = nome do metodo
+        //GetAll = nome do metodo
         public async Task<IActionResult> GetAll()
         {
             try
@@ -33,7 +33,7 @@ namespace TCC_AmoPatas
                     throw new System.Exception("Nenhuma informação encontrada");
                 }
                 //se der bam retorna o resultado buscado
-                return OK(petzin);
+                return Ok(petzin);
             }
             catch (System.Exception ex)
             {
