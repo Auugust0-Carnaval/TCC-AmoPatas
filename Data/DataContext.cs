@@ -8,8 +8,8 @@ namespace AmoPatass.Data
         {
             
         }  
-         public DbSet<AnimaisFoto> AnimaisFoto { get; set; }
-         public DbSet<PessoaFoto> PessoasFotos {get; set;}
+         public DbSet<AnimaisFoto> AnimaisFoto { get; set; }//Pega as classes em models e transforma em tabelas
+         public DbSet<PessoaFoto> PessoasFotos {get; set;}//Classe PessoaFoto vira tabela PessoasFotos
          public DbSet<Categoria> Categorias { get; set; }
          public DbSet<Interessados> Interessados { get; set; }
          public DbSet<Pessoas> Pessoas { get; set; }
