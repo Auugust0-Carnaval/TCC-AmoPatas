@@ -1,6 +1,9 @@
 using AmoPatass.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace AmoPatass
 {
@@ -17,6 +20,7 @@ namespace AmoPatass
             _httpContextoAccessor = httpContextAccessor;
         }
 
+        [AllowAnonymous]    
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAsync()
         {
@@ -35,13 +39,35 @@ namespace AmoPatass
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(Categoria newCategoria)
+        public async Task<IActionResult> AddAsync(Categoria newCategoria)
         {
             try
             {
                 await _context.Categorias.AddAsync(newCategoria);
                 await _context.SaveChangesAsync();
                 return Ok(string.Format("Categoria: {0} com Id: {1} , adicionada com sucesso", newCategoria.dsCategoria, newCategoria.IdCategoria));
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpAsync(Categoria UpCategoria, string name)
+        {
+            try
+            {
+               String stconection = "Data Source= workstation id=DB-DS-AMOPATAS.mssql.somee.com;packet size=4096;user id=saaugustocarnaval;pwd=123456789;data source=DB-DS-AMOPATAS.mssql.somee.com;persist security info=False;initial catalog=DB-DS-AMOPATAS";
+               SqlConnection connection = new SqlConnection(stconection);
+               SqlCommand cmd = new SqlCommand("SELECT dsCategoria FROM Pessoas", connection);
+               connection.Open();
+               cmd.ExecuteNonQuery();
+              
+
+                _context.Categorias.Update(UpCategoria);
+                int linhaAfetadas = await _context.SaveChangesAsync();
+                return Ok(string.Format("A categoria : " + cmd + " foi alterada para:" + UpCategoria));
             }
             catch (System.Exception ex)
             {

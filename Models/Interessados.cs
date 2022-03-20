@@ -9,6 +9,5 @@ namespace AmoPatass
         public Pets Pets { get; set; }
         public int idAnimal { get; set; }
         public DateTime dtInteresse { get; set; }
-        
     }
 }
