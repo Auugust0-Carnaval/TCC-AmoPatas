@@ -13,20 +13,13 @@ namespace AmoPatass
         public string UfAnimal { get; set; }
         public int Idade { get; set; }
 
-        //fks
-        public Porte Porte { get; set; }
+        //Siangui arrumo aqui  <3
         public int IdPorte { get; set; }//fk
-
-        public Pessoas Pessoas { get; set; }
         public int IdPessoa { get; set; }
-        public Racas Racas { get; set; }
         public int IdRaca { get; set; } 
-        public  Categoria Categoria { get; set; }
         public int IdCategoria { get; set; } 
-        public Situacoes Situacoes { get; set; }
         public int IdSituacao { get; set; } 
         public int idTutor { get; set; }
-        public Sexo Sexo { get; set; }
         public int IdSexo { get; set; }
     }
 }
