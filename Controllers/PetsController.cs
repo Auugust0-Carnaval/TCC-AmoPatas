@@ -33,14 +33,53 @@ namespace TCC_AmoPatas
                     throw new System.Exception("Nenhuma informação encontrada");
                 }
                 //se der bam retorna o resultado buscado
-                return OK(petzin);
+                return Ok(petzin);
             }
             catch (System.Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-
         }
+        
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSingle(int id)
+        { 
+            try
+            {
+               Pets p = await _context.Pets.FirstOrDefaultAsync(pet => pet.IdAnimal == id);
+               if(p.IdAnimal != id )//coount não funfa pq não é list
+               {
+                   throw new System.Exception("fofeu");
+               }
+                    
+            
+                return Ok(p);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(Pets novoAnimal){
+            try
+            {
+                await _context.Pets.AddAsync(novoAnimal);
+                await _context.SaveChangesAsync();
+
+                return Ok(String.Format("Animal: {0} adicionado com sucesso", novoAnimal.IdAnimal));
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+
+
 
         
     }
