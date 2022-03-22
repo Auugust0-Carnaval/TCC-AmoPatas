@@ -2200,19 +2200,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Carlos\\.nuget\\packages\\": {}
+    "C:\\Users\\siang\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Carlos\\Desktop\\TCC-AmoPatas\\AmoPatass.csproj",
+      "projectUniqueName": "C:\\TCC-AmoPatas\\AmoPatass.csproj",
       "projectName": "AmoPatass",
-      "projectPath": "C:\\Users\\Carlos\\Desktop\\TCC-AmoPatas\\AmoPatass.csproj",
-      "packagesPath": "C:\\Users\\Carlos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Carlos\\Desktop\\TCC-AmoPatas\\obj\\",
+      "projectPath": "C:\\TCC-AmoPatas\\AmoPatass.csproj",
+      "packagesPath": "C:\\Users\\siang\\.nuget\\packages\\",
+      "outputPath": "C:\\TCC-AmoPatas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Carlos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\siang\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2287,7 +2287,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
