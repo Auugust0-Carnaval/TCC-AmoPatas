@@ -21,7 +21,7 @@ namespace AmoPatass
             _httpContextoAccessor = httpContextAccessor; //implemetando interface para propiedades de metodos HTTPS
         }
 
-        [AllowAnonymous] //pode ser acesso a esse metodo sendo anonimato
+        [AllowAnonymous] //pode ter acesso a esse metodo sendo anonimato
         [HttpGet("GetAll")] //metodo de busca
         public async Task<IActionResult> GetAsync()
         {
