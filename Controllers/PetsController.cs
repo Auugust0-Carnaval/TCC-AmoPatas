@@ -21,7 +21,7 @@ namespace TCC_AmoPatas
         }
 
         [HttpGet]
-        //GetAl = nome do metodo
+        //GetAll = nome do metodo
         public async Task<IActionResult> GetAll()
         {
             try

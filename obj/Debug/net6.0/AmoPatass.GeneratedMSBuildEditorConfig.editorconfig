@@ -8,9 +8,17 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AmoPatass
 build_property.RootNamespace = AmoPatass
+<<<<<<< HEAD
 build_property.ProjectDir = C:\TCC-AmoPatas\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\TCC-AmoPatas
+=======
+build_property.ProjectDir = C:\AmoPatasss\TCC-AmoPatas\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\AmoPatasss\TCC-AmoPatas
+>>>>>>> 9f016ec9b0ea2673423f0e684e1e4a1acbd3bea8
 build_property._RazorSourceGeneratorDebug = 

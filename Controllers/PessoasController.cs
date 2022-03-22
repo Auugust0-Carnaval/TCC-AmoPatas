@@ -12,7 +12,7 @@ namespace AmoPatass
     {
         // Atributo global
         private readonly DataContext _context;
-        private readonly IHttpContextAccessor _httpContextoAccessor;
+        private readonly IHttpContextAccessor _httpContextoAccessor; //implemetando interface para propiedades de metodos HTTPS
 
         // Criando Construtor , para inicializar o contexto Declarado !
         public PessoasController(DataContext context, IHttpContextAccessor httpContextAccessor)

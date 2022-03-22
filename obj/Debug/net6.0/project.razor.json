@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "FilePath": "c:\\TCC-AmoPatas\\AmoPatass.csproj",
+=======
+  "FilePath": "c:\\AmoPatasss\\TCC-AmoPatas\\AmoPatass.csproj",
+>>>>>>> 9f016ec9b0ea2673423f0e684e1e4a1acbd3bea8
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",

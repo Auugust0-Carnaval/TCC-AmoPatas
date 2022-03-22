@@ -2200,11 +2200,16 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\siang\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\Augus\\.nuget\\packages\\": {}
+>>>>>>> 9f016ec9b0ea2673423f0e684e1e4a1acbd3bea8
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\TCC-AmoPatas\\AmoPatass.csproj",
       "projectName": "AmoPatass",
       "projectPath": "C:\\TCC-AmoPatas\\AmoPatass.csproj",
@@ -2213,6 +2218,16 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\siang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\AmoPatasss\\TCC-AmoPatas\\AmoPatass.csproj",
+      "projectName": "AmoPatass",
+      "projectPath": "C:\\AmoPatasss\\TCC-AmoPatas\\AmoPatass.csproj",
+      "packagesPath": "C:\\Users\\Augus\\.nuget\\packages\\",
+      "outputPath": "C:\\AmoPatasss\\TCC-AmoPatas\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Augus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 9f016ec9b0ea2673423f0e684e1e4a1acbd3bea8
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
