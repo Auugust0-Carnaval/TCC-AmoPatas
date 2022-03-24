@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\AmoPatass\\AmoPatass.csproj": {}
+    "C:\\Users\\User\\TCC-AmoPatas\\AmoPatass.csproj": {}
   },
   "projects": {
-    "C:\\AmoPatass\\AmoPatass.csproj": {
+    "C:\\Users\\User\\TCC-AmoPatas\\AmoPatass.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\AmoPatass\\AmoPatass.csproj",
+        "projectUniqueName": "C:\\Users\\User\\TCC-AmoPatas\\AmoPatass.csproj",
         "projectName": "AmoPatass",
-        "projectPath": "C:\\AmoPatass\\AmoPatass.csproj",
-        "packagesPath": "C:\\Users\\Augus\\.nuget\\packages\\",
-        "outputPath": "C:\\AmoPatass\\obj\\",
+        "projectPath": "C:\\Users\\User\\TCC-AmoPatas\\AmoPatass.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\TCC-AmoPatas\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Augus\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -89,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

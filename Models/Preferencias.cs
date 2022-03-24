@@ -14,6 +14,10 @@ namespace AmoPatass
         public DateTime mtPreferencia { get; set; }
         public Categoria Categoria { get; set; }
         public int IdCategoria { get; set; }
-        
+
+        //raça
+        public Racas Racas { get; set; }
+        public int IdRaca { get; set; }
+
     }
 }

@@ -7,5 +7,6 @@ namespace AmoPatass
     {
         public int IdPessoa { get; set; }
         public Pessoas Pessoas { get; set; }
+        public byte[] ftPessoa { get; set; }
     }
 }
