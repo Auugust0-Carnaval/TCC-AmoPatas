@@ -31,9 +31,6 @@ namespace TCC_AmoPatas.Controllers
             try
             {
                 List<Preferencias> pfLista = await _context.Preferencias.ToListAsync();
-
-                if(pfLista == null)
-                    throw new System.Exception("Não encontrado Pets com estas categorias");
                 //Retorno da Lista de preferencias
                 return Ok(pfLista);
             }
@@ -45,27 +42,27 @@ namespace TCC_AmoPatas.Controllers
 
 
         //exbir a lista de pets de acordo com o filtro
-        //   [HttpGet("{id}")]//buscar pelo id informado
+          //  [HttpGet("{id}")] //buscar pelo id informado
 
-        //  public async Task<IActionResult> GetSingle(int id)
-        //  {
-        //      try
-        //      {
-        //           Pets p = await _context.Pets
-        //           .Include( c => c.Categorias )
-        //           .Include(s => s.Sexo)
-        //           .Include(pt => pt.Porte)
-        //           .Include(r => r.Racas)
-        //           .ThenInclude(p => p.Pessoas)
-        //           .FirstOrDefaultAsync(pbusca => pbusca.Id == id);
-        //           return Ok(p);
-        //      }
-        //      catch (System.Exception ex)
-        //      {
-        //           return BadRequest(ex.Message);
+          // public async Task<IActionResult> GetSingle(int id)
+          // {
+          //     try
+          //     {
+          //          Pets pt = await _context.Pets
+          //          .Include( c => c.Categorias )
+          //          .Include(s => s.Sexo)
+          //          .Include(por => por.Porte)
+          //          .Include(r => r.Racas)
+          //          .ThenInclude(p => p.Pessoas)
+          //          .FirstOrDefaultAsync(pbusca => pbusca.Id == id);
+          //          return Ok(pt);
+          //     }
+          //     catch (System.Exception ex)
+          //     {
+          //          return BadRequest(ex.Message);
 
-        //      }
-        //  }
+          //     }
+          // }
 
 
 
