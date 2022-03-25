@@ -103,7 +103,24 @@ namespace TCC_AmoPatas
             }
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                Pets pRemover = await _context.Pets
+                    .FirstOrDefaultAsync(p => p.IdAnimal == id);
 
+                _context.Pets.Remove(pRemover);
+                int linhasAfetadas = await _context.SaveChangesAsync();
+                
+                return Ok(String.Format("id {0} do Animal , deletado com sucesso ! linhas Afetadas: {1} ", id, linhasAfetadas));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
 
 
 
