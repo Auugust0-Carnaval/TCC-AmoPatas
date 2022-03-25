@@ -26,7 +26,7 @@ namespace AmoPatass
         { 
             try
             {
-                Pessoas p = await _context.Pessoas
+                Pessoa p = await _context.Pessoas
                     .FirstOrDefaultAsync(pBusca => pBusca.idPessoa == id);
             
                 return Ok(p);
@@ -43,7 +43,7 @@ namespace AmoPatass
         { 
             try
             {
-                List<Pessoas> lista = await _context.Pessoas.ToListAsync();
+                List<Pessoa> lista = await _context.Pessoas.ToListAsync();
                 return Ok(lista);
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace AmoPatass
 
 
         [HttpPost]
-        public async Task<IActionResult> Add(Pessoas novaPessoa){
+        public async Task<IActionResult> Add(Pessoa novaPessoa){
             try
             {
                 await _context.Pessoas.AddAsync(novaPessoa);
@@ -70,7 +70,7 @@ namespace AmoPatass
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Pessoas novoPessoa)
+        public async Task<IActionResult> Update(Pessoa novoPessoa)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace AmoPatass
         {
             try
             {
-                Pessoas pRemover = await _context.Pessoas
+                Pessoa pRemover = await _context.Pessoas
                     .FirstOrDefaultAsync(p => p.idPessoa == id);
 
                 _context.Pessoas.Remove(pRemover);

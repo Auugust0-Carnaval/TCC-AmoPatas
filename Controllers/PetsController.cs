@@ -30,7 +30,7 @@ namespace TCC_AmoPatas
         {
             try
             {
-                List<Pets> petzin = await _context.Pets.ToListAsync();
+                List<Pet> petzin = await _context.Pets.ToListAsync();
                 //se der ruiim executa o if
                 if(petzin.Count == 0)
                 {
@@ -50,7 +50,7 @@ namespace TCC_AmoPatas
         { 
             try
             {
-               Pets p = await _context.Pets.FirstOrDefaultAsync(pet => pet.IdAnimal == id);
+               Pet p = await _context.Pets.FirstOrDefaultAsync(pet => pet.IdAnimal == id);
                if(p.IdAnimal != id )//coount não funfa pq não é list
                {
                    throw new System.Exception("fofeu");
@@ -66,7 +66,7 @@ namespace TCC_AmoPatas
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(Pets novoAnimal){
+        public async Task<IActionResult> Add(Pet novoAnimal){
             try
             {
                 await _context.Pets.AddAsync(novoAnimal);
@@ -81,7 +81,7 @@ namespace TCC_AmoPatas
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Pets newPet)
+        public async Task<IActionResult> Update(Pet newPet)
         {
             try
             {
@@ -108,7 +108,7 @@ namespace TCC_AmoPatas
         {
             try
             {
-                Pets pRemover = await _context.Pets
+                Pet pRemover = await _context.Pets
                     .FirstOrDefaultAsync(p => p.IdAnimal == id);
 
                 _context.Pets.Remove(pRemover);
@@ -121,10 +121,6 @@ namespace TCC_AmoPatas
                 return BadRequest(ex);
             }
         }
-
-
-
-
         
     }
 }

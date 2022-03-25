@@ -2,7 +2,7 @@ using System;
 
 namespace AmoPatass
 {
-    public class Interessados
+    public class Interessado
     {
         public int IdPessoa { get; set; }
         public int idAnimal { get; set; }

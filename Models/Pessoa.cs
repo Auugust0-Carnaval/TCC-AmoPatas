@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AmoPatass
 {
-    public class Pessoas
+    public class Pessoa
     {
         public int idPessoa { get; set; }
         public string nmPessoa { get; set; }

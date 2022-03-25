@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AmoPatass
 {
-    public class Pets
+    public class Pet
     {
         public int IdAnimal { get; set; }//pk
         public string nmAnimal { get; set; }

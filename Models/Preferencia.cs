@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AmoPatass
 {
-    public class Preferencias
+    public class Preferencia
     {
-        public Pessoas Pessoas { get; set; }
+        public Pessoa Pessoas { get; set; }
         public int IdPessoa { get; set; }
         public int sqPreferencia { get; set; }
         public Porte Porte { get; set; }
@@ -16,7 +16,7 @@ namespace AmoPatass
         public int IdCategoria { get; set; }
 
         //raça
-        public Racas Racas { get; set; }
+        public Raca Racas { get; set; }
         public int IdRaca { get; set; }
 
     }
