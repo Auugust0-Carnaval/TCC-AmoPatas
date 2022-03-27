@@ -6,8 +6,8 @@ namespace AmoPatass.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-            
-        }  
+
+        }
          public DbSet<AnimaisFoto> AnimaisFoto { get; set; }//Pega as classes em models e transforma em tabelas
          public DbSet<PessoaFoto> PessoasFotos {get; set;}//Classe PessoaFoto vira tabela PessoasFotos
          public DbSet<Categoria> Categorias { get; set; }
@@ -22,7 +22,7 @@ namespace AmoPatass.Data
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
          {
-            
+
             modelBuilder.Entity<AnimaisFoto>()
                 .HasOne<Pets>()
                 .WithMany()
@@ -39,7 +39,7 @@ namespace AmoPatass.Data
 
 
             modelBuilder.Entity<Pessoas>()
-                .HasKey(p => new{p.idPessoa});
+                .HasKey(p => new{p.IdPessoa});
 
             modelBuilder.Entity<Pets>()
                 .HasKey(pt => new{pt.IdAnimal});
@@ -47,7 +47,7 @@ namespace AmoPatass.Data
             modelBuilder.Entity<Racas>()
                 .HasKey(r => new{r.IdRaca});
 
-            
+
             modelBuilder.Entity<Sexo>()
                 .HasKey(s => new{s.IdSexo});
 

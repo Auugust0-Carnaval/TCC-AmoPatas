@@ -20,15 +20,15 @@ namespace AmoPatass
             _context = context; //inicialização do atributo
             _httpContextoAccessor = httpContextAccessor;
         }
-        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSingle(int id)
-        { 
+        {
             try
             {
                 Pessoas p = await _context.Pessoas
-                    .FirstOrDefaultAsync(pBusca => pBusca.idPessoa == id);
-            
+                    .FirstOrDefaultAsync(pBusca => pBusca.IdPessoa == id);
+
                 return Ok(p);
             }
             catch (Exception ex)
@@ -36,11 +36,11 @@ namespace AmoPatass
                 return BadRequest(ex.Message);
             }
         }
-        
+
 
         [HttpGet("GetAll")]
         public async Task<IActionResult> Get()
-        { 
+        {
             try
             {
                 List<Pessoas> lista = await _context.Pessoas.ToListAsync();
@@ -48,7 +48,7 @@ namespace AmoPatass
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);                
+                return BadRequest(ex.Message);
             }
         }
 
@@ -60,7 +60,7 @@ namespace AmoPatass
                 await _context.Pessoas.AddAsync(novaPessoa);
                 await _context.SaveChangesAsync();
 
-                return Ok(String.Format("Pessoa: {0} adicionada com sucesso", novaPessoa.idPessoa));
+                return Ok(String.Format("Pessoa: {0} adicionada com sucesso", novaPessoa.IdPessoa));
 
             }
             catch (Exception ex)
@@ -91,11 +91,11 @@ namespace AmoPatass
             try
             {
                 Pessoas pRemover = await _context.Pessoas
-                    .FirstOrDefaultAsync(p => p.idPessoa == id);
+                    .FirstOrDefaultAsync(p => p.IdPessoa == id);
 
                 _context.Pessoas.Remove(pRemover);
                 int linhasAfetadas = await _context.SaveChangesAsync();
-                
+
                 return Ok(String.Format("id {0} da Pessoa, deletado com sucesso ! linhas Afetadas: {1} ", id, linhasAfetadas));
             }
             catch (Exception ex)
@@ -103,6 +103,6 @@ namespace AmoPatass
                 return BadRequest(ex);
             }
         }
-        
+
     }
 }
