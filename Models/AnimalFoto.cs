@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AmoPatass 
 {
-    public class AnimaisFoto
+    public class AnimalFoto
     {
         [Key]
         public int IdAnimalFoto { get; set; }
-        public Pets Pets { get; set; }
+        public Pet Pets { get; set; }
         public int IdAnimal { get; set; }
         public byte[] ftAnimal { get; set; }
 

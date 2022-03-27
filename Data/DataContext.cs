@@ -8,56 +8,56 @@ namespace AmoPatass.Data
         {
 
         }
-         public DbSet<AnimaisFoto> AnimaisFoto { get; set; }//Pega as classes em models e transforma em tabelas
+         public DbSet<AnimalFoto> AnimaisFoto { get; set; }//Pega as classes em models e transforma em tabelas
          public DbSet<PessoaFoto> PessoasFotos {get; set;}//Classe PessoaFoto vira tabela PessoasFotos
          public DbSet<Categoria> Categorias { get; set; }
-         public DbSet<Interessados> Interessados { get; set; }
-         public DbSet<Pessoas> Pessoas { get; set; }
-         public DbSet<Pets> Pets { get; set; }
+         public DbSet<Interessado> Interessados { get; set; }
+         public DbSet<Pessoa> Pessoas { get; set; }
+         public DbSet<Pet> Pets { get; set; }
          public DbSet<Porte> Porte { get; set; }
-         public DbSet<Preferencias> Preferencias { get; set; }
-         public DbSet<Racas> Racas { get; set; }
+         public DbSet<Preferencia> Preferencias { get; set; }
+         public DbSet<Raca> Racas { get; set; }
          public DbSet<Sexo> Sexo { get; set; }
-         public DbSet<Situacoes> Situacoes { get; set; }
+         public DbSet<Situacao> Situacoes { get; set; }
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
          {
 
-            modelBuilder.Entity<AnimaisFoto>()
-                .HasOne<Pets>()
+            modelBuilder.Entity<AnimalFoto>()
+                .HasOne<Pet>()
                 .WithMany()
                 .HasForeignKey(p => p.IdAnimal);
 
-            modelBuilder.Entity<AnimaisFoto>()
+            modelBuilder.Entity<AnimalFoto>()
                 .HasKey(anf => new {anf.IdAnimalFoto});
 
             modelBuilder.Entity<Categoria>()
                 .HasKey(c => new{c.IdCategoria});
 
-            modelBuilder.Entity<Interessados>()
+            modelBuilder.Entity<Interessado>()
                 .HasKey(i => new{i.IdPessoa, i.idAnimal});
 
 
-            modelBuilder.Entity<Pessoas>()
+            modelBuilder.Entity<Pessoa>()
                 .HasKey(p => new{p.IdPessoa});
 
-            modelBuilder.Entity<Pets>()
+            modelBuilder.Entity<Pet>()
                 .HasKey(pt => new{pt.IdAnimal});
 
-            modelBuilder.Entity<Racas>()
+            modelBuilder.Entity<Raca>()
                 .HasKey(r => new{r.IdRaca});
 
 
             modelBuilder.Entity<Sexo>()
                 .HasKey(s => new{s.IdSexo});
 
-            modelBuilder.Entity<Situacoes>()
+            modelBuilder.Entity<Situacao>()
                 .HasKey(st => new{st.IdSituacao});
 
             modelBuilder.Entity<Porte>()
                 .HasKey(por => new {por.IdPorte});
 
-            modelBuilder.Entity<Preferencias>
+            modelBuilder.Entity<Preferencia>
             (pr =>
                 {
                     pr.HasNoKey();

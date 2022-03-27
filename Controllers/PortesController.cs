@@ -7,13 +7,13 @@ namespace TCC_AmoPatas.Controllers
 {
     [ApiController]
     [Route("[Controller]")]
-    public class PorteController : ControllerBase
+    public class PortesController : ControllerBase
     {
         private readonly DataContext _context; //variavel _context = sempre usaremos para acessa o banco
         private readonly IHttpContextAccessor _httpContextoAccessor;
 
         // Criando Construtor , para inicializar o contexto Declarado !
-        public PorteController(DataContext context, IHttpContextAccessor httpContextAccessor)
+        public PortesController(DataContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context; //inicialização do atributo
             _httpContextoAccessor = httpContextAccessor;

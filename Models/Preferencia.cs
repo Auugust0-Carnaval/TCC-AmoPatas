@@ -4,13 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AmoPatass
 {
-    public class Preferencias
+    public class Preferencia
     {
-
         public int IdPessoa { get; set; }
 
         [ForeignKey("IdPessoa")]
-        public Pessoas Pessoas { get; set; }
+        public Pessoa Pessoa { get; set; }
 
         public int sqPreferencia { get; set; }
         public int IdPorte { get; set; }
