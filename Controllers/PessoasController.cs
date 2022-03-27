@@ -27,8 +27,13 @@ namespace AmoPatass
             try
             {
                 Pessoa p = await _context.Pessoas
+<<<<<<< HEAD
                     .FirstOrDefaultAsync(pBusca => pBusca.IdPessoa == id);
 
+=======
+                    .FirstOrDefaultAsync(pBusca => pBusca.idPessoa == id);
+            
+>>>>>>> 440f248d639515fde9d1e07415708f3856dbdc20
                 return Ok(p);
             }
             catch (Exception ex)
@@ -91,7 +96,11 @@ namespace AmoPatass
             try
             {
                 Pessoa pRemover = await _context.Pessoas
+<<<<<<< HEAD
                     .FirstOrDefaultAsync(p => p.IdPessoa == id);
+=======
+                    .FirstOrDefaultAsync(p => p.idPessoa == id);
+>>>>>>> 440f248d639515fde9d1e07415708f3856dbdc20
 
                 _context.Pessoas.Remove(pRemover);
                 int linhasAfetadas = await _context.SaveChangesAsync();

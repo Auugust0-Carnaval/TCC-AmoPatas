@@ -11,6 +11,10 @@ namespace TCC_AmoPatas.Controllers
   [Route("[Controller]")]
     public class PreferenciasController : ControllerBase
     {
+<<<<<<< HEAD
+=======
+        private Preferencia pf = new Preferencia();
+>>>>>>> 440f248d639515fde9d1e07415708f3856dbdc20
         private readonly DataContext _context;
         private readonly IHttpContextAccessor _httpContextoAccessor;
 
@@ -29,7 +33,11 @@ namespace TCC_AmoPatas.Controllers
         {
             try
             {
+<<<<<<< HEAD
                 List<Preferencia> sqLista = await _context.Preferencias.ToListAsync();
+=======
+                List<Preferencia> pfLista = await _context.Preferencias.ToListAsync();
+>>>>>>> 440f248d639515fde9d1e07415708f3856dbdc20
                 //Retorno da Lista de preferencias
                 return Ok(sqLista);
             }
