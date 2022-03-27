@@ -6,7 +6,6 @@ namespace AmoPatass
 {
     public class Preferencia
     {
-
         public int IdPessoa { get; set; }
 
         [ForeignKey("IdPessoa")]
