@@ -30,7 +30,7 @@ namespace TCC_AmoPatas
         {
             try
             {
-                List<Pet> petzin = await _context.Pets.ToListAsync();
+                List<Pet> petzin = await _context.Pet.ToListAsync();
                 //se der ruiim executa o if
                 if(petzin.Count == 0)
                 {
@@ -44,19 +44,19 @@ namespace TCC_AmoPatas
                 return BadRequest(ex.Message);
             }
         }
-        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSingle(int id)
-        { 
+        {
             try
             {
-               Pet p = await _context.Pets.FirstOrDefaultAsync(pet => pet.IdAnimal == id);
+               Pet p = await _context.Pet.FirstOrDefaultAsync(pet => pet.IdAnimal == id);
                if(p.IdAnimal != id )//coount não funfa pq não é list
                {
                    throw new System.Exception("fofeu");
                }
-                    
-            
+
+
                 return Ok(p);
             }
             catch (Exception ex)
@@ -69,7 +69,7 @@ namespace TCC_AmoPatas
         public async Task<IActionResult> Add(Pet novoAnimal){
             try
             {
-                await _context.Pets.AddAsync(novoAnimal);
+                await _context.Pet.AddAsync(novoAnimal);
                 await _context.SaveChangesAsync();
 
                 return Ok(String.Format("Animal: {0} adicionado com sucesso", novoAnimal.nmAnimal));
@@ -92,7 +92,7 @@ namespace TCC_AmoPatas
                 SqlCommand cmd = new SqlCommand(querySql,connection);
                 string oldPet = Convert.ToString(cmd.ExecuteScalar());
 
-                _context.Pets.Update(newPet);
+                _context.Pet.Update(newPet);
                 int linhasAfetadas = await _context.SaveChangesAsync();
 
                 return Ok(String.Format("{0} teve dados alterados",oldPet));
@@ -108,12 +108,12 @@ namespace TCC_AmoPatas
         {
             try
             {
-                Pet pRemover = await _context.Pets
+                Pet pRemover = await _context.Pet
                     .FirstOrDefaultAsync(p => p.IdAnimal == id);
 
-                _context.Pets.Remove(pRemover);
+                _context.Pet.Remove(pRemover);
                 int linhasAfetadas = await _context.SaveChangesAsync();
-                
+
                 return Ok(String.Format("id {0} do Animal , deletado com sucesso ! linhas Afetadas: {1} ", id, linhasAfetadas));
             }
             catch (Exception ex)
@@ -121,6 +121,6 @@ namespace TCC_AmoPatas
                 return BadRequest(ex);
             }
         }
-        
+
     }
 }

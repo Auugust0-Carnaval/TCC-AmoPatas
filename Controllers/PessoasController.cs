@@ -26,14 +26,11 @@ namespace AmoPatass
         {
             try
             {
-                Pessoa p = await _context.Pessoas
-<<<<<<< HEAD
-                    .FirstOrDefaultAsync(pBusca => pBusca.IdPessoa == id);
+                Pessoa p = await _context.Pessoa
+                .FirstOrDefaultAsync(pBusca => pBusca.IdPessoa == id);
 
-=======
-                    .FirstOrDefaultAsync(pBusca => pBusca.idPessoa == id);
-            
->>>>>>> 440f248d639515fde9d1e07415708f3856dbdc20
+
+
                 return Ok(p);
             }
             catch (Exception ex)
@@ -48,7 +45,7 @@ namespace AmoPatass
         {
             try
             {
-                List<Pessoa> lista = await _context.Pessoas.ToListAsync();
+                List<Pessoa> lista = await _context.Pessoa.ToListAsync();
                 return Ok(lista);
             }
             catch (Exception ex)
@@ -62,7 +59,7 @@ namespace AmoPatass
         public async Task<IActionResult> Add(Pessoa novaPessoa){
             try
             {
-                await _context.Pessoas.AddAsync(novaPessoa);
+                await _context.Pessoa.AddAsync(novaPessoa);
                 await _context.SaveChangesAsync();
 
                 return Ok(String.Format("Pessoa: {0} adicionada com sucesso", novaPessoa.IdPessoa));
@@ -79,7 +76,7 @@ namespace AmoPatass
         {
             try
             {
-                _context.Pessoas.Update(novoPessoa);
+                _context.Pessoa.Update(novoPessoa);
                 int linhasAfetadas = await _context.SaveChangesAsync();
 
                 return Ok(String.Format("Atualizado com sucesso ! linhas Afetadas: {0} ", linhasAfetadas));
@@ -95,14 +92,13 @@ namespace AmoPatass
         {
             try
             {
-                Pessoa pRemover = await _context.Pessoas
-<<<<<<< HEAD
-                    .FirstOrDefaultAsync(p => p.IdPessoa == id);
-=======
-                    .FirstOrDefaultAsync(p => p.idPessoa == id);
->>>>>>> 440f248d639515fde9d1e07415708f3856dbdc20
+                Pessoa pRemover = await _context.Pessoa
 
-                _context.Pessoas.Remove(pRemover);
+                    .FirstOrDefaultAsync(p => p.IdPessoa == id);
+
+
+
+                _context.Pessoa.Remove(pRemover);
                 int linhasAfetadas = await _context.SaveChangesAsync();
 
                 return Ok(String.Format("id {0} da Pessoa, deletado com sucesso ! linhas Afetadas: {1} ", id, linhasAfetadas));

@@ -12,7 +12,7 @@ namespace AmoPatass
     [Route("[controller]")]
     public class CategoriasController : ControllerBase // heranca da classe ControllerBase para ter as mesma caracteristicas e metodos
     {
-        private readonly DataContext _context; 
+        private readonly DataContext _context;
         private readonly IHttpContextAccessor _httpContextoAccessor;
 
         public CategoriasController(DataContext context, IHttpContextAccessor httpContextAccessor)
@@ -27,7 +27,7 @@ namespace AmoPatass
         {
             try
             {
-                List<Categoria> c = await _context.Categorias.ToListAsync(); //busca informaçõe do banco e tranforma em lista
+                List<Categoria> c = await _context.Categoria.ToListAsync(); //busca informaçõe do banco e tranforma em lista
 
                 if(c.Count == 0 ) // conta  as lihas de busca, se tiver zero linhas, exibe a mensagem
                     throw new System.Exception("Não foi encontado nenhuma categoria :(");
@@ -44,7 +44,7 @@ namespace AmoPatass
         {
             try
             {
-                await _context.Categorias.AddAsync(newCategoria); //vai no contexto da base de dados e insere informações
+                await _context.Categoria.AddAsync(newCategoria); //vai no contexto da base de dados e insere informações
                 await _context.SaveChangesAsync(); //salva as informações inseridas
                 //retorna uma mensagem em formato de string (String.Formart()) concatenando a nova contegoria inserida com ID e descricao(dsCategoria)
                 return Ok(string.Format("Categoria: {0} com Id: {1} , adicionada com sucesso", newCategoria.dsCategoria, newCategoria.IdCategoria));
@@ -67,10 +67,10 @@ namespace AmoPatass
                connection.Open(); //abrindo conexao com a variavel instanciada com a string de conexao
                SqlCommand cmd = new SqlCommand(sql,connection); // buscando dsCategoria para colocar no StringFormat
                string nameCategory = Convert.ToString(cmd.ExecuteScalar()); // execudando comando e colocando valor de busca na variavel nameCategory
-            
-               _context.Categorias.Update(UpCategoria);//faz a alteração das informações inseridas na coluna desejada
+
+               _context.Categoria.Update(UpCategoria);//faz a alteração das informações inseridas na coluna desejada
                int linhaAfetadas = await _context.SaveChangesAsync(); //mostra as linhas afetadas na base de dados
-               
+
                //retorna mensagem de sucesso com formato de string, exibindo valor "antigo" da coluna e valor "novo" (alterado) da coluna
                return Ok(string.Format("A categoria {0}, foi alterada para {1}!",nameCategory, UpCategoria.dsCategoria ));
             }
@@ -84,14 +84,14 @@ namespace AmoPatass
         public async Task<IActionResult> DeleteAsync(int id)
         {
             try
-            {    Categoria cRemove = await _context.Categorias
+            {    Categoria cRemove = await _context.Categoria
                     .FirstOrDefaultAsync(ct => ct.IdCategoria == id); //ninstancia valor buscado na base de dados (IdCategoria) na variavel "cRemove"
 
                  if(cRemove == null) // caso o IdCategoria inserido na url para a busca seja null = "nulo" é informado uma mensagem
                  {
                      throw new System.Exception("Categoria inserida não existe para ser excluida"); //mensagem de erro
                  }
-                _context.Categorias.Remove(cRemove); // remove as informações desejadas na base de dados
+                _context.Categoria.Remove(cRemove); // remove as informações desejadas na base de dados
                 int linhasAfetadas = await _context.SaveChangesAsync(); // exibi linha afetadas após execução
 
                 //retorna mensagem de sucesso em formato de string, concatenando variavel(cRemove) exibindo descrição da categoria (dsCategoria)

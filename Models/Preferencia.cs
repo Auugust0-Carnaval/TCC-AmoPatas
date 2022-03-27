@@ -6,10 +6,7 @@ namespace AmoPatass
 {
     public class Preferencia
     {
-<<<<<<< HEAD
-=======
-        public Pessoa Pessoas { get; set; }
->>>>>>> 440f248d639515fde9d1e07415708f3856dbdc20
+
         public int IdPessoa { get; set; }
 
         [ForeignKey("IdPessoa")]
@@ -35,17 +32,13 @@ namespace AmoPatass
 
 
         //raça
-<<<<<<< HEAD
 
         // public int IdRaca { get; set; }
 
         // [ForeignKey("IdRaca")]
         // public Racas Racas { get; set; }
 
-=======
-        public Raca Racas { get; set; }
-        public int IdRaca { get; set; }
->>>>>>> 440f248d639515fde9d1e07415708f3856dbdc20
+
 
     }
 }

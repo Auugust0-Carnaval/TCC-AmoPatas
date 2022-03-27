@@ -6,32 +6,28 @@ namespace AmoPatass.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-<<<<<<< HEAD
+
 
         }
-=======
-            
-        }  
->>>>>>> 440f248d639515fde9d1e07415708f3856dbdc20
-         public DbSet<AnimalFoto> AnimaisFoto { get; set; }//Pega as classes em models e transforma em tabelas
-         public DbSet<PessoaFoto> PessoasFotos {get; set;}//Classe PessoaFoto vira tabela PessoasFotos
-         public DbSet<Categoria> Categorias { get; set; }
-         public DbSet<Interessado> Interessados { get; set; }
-         public DbSet<Pessoa> Pessoas { get; set; }
-         public DbSet<Pet> Pets { get; set; }
+
+
+
+
+         public DbSet<AnimalFoto> AnimalFoto { get; set; }//Pega as classes em models e transforma em tabelas
+         public DbSet<PessoaFoto> PessoaFoto {get; set;}//Classe PessoaFoto vira tabela PessoasFotos
+         public DbSet<Categoria> Categoria { get; set; }
+         public DbSet<Interessado> Interessado { get; set; }
+         public DbSet<Pessoa> Pessoa { get; set; }
+         public DbSet<Pet> Pet { get; set; }
          public DbSet<Porte> Porte { get; set; }
-         public DbSet<Preferencia> Preferencias { get; set; }
-         public DbSet<Raca> Racas { get; set; }
+         public DbSet<Preferencia> Preferencia { get; set; }
+         public DbSet<Raca> Raca { get; set; }
          public DbSet<Sexo> Sexo { get; set; }
-         public DbSet<Situacao> Situacoes { get; set; }
+         public DbSet<Situacao> Situacoe { get; set; }
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
          {
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 440f248d639515fde9d1e07415708f3856dbdc20
             modelBuilder.Entity<AnimalFoto>()
                 .HasOne<Pet>()
                 .WithMany()
@@ -48,11 +44,12 @@ namespace AmoPatass.Data
 
 
             modelBuilder.Entity<Pessoa>()
-<<<<<<< HEAD
+
+
                 .HasKey(p => new{p.IdPessoa});
-=======
-                .HasKey(p => new{p.idPessoa});
->>>>>>> 440f248d639515fde9d1e07415708f3856dbdc20
+
+
+
 
             modelBuilder.Entity<Pet>()
                 .HasKey(pt => new{pt.IdAnimal});

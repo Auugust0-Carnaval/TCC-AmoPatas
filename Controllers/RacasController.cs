@@ -8,7 +8,7 @@ namespace TCC_AmoPatas.Controllers
     [ApiController]
     [Route("[Controller]")]
     public class RacasController : ControllerBase
-    {        
+    {
         private readonly DataContext _context;
         private readonly IHttpContextAccessor _httpContextoAccessor; //implemetando interface para propiedades de metodos HTTPS
         public RacasController(DataContext context, IHttpContextAccessor httpContextAccessor)
@@ -16,15 +16,15 @@ namespace TCC_AmoPatas.Controllers
             _context = context; //inicialização do atributo
             _httpContextoAccessor = httpContextAccessor;
         }
-         
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSingle(int id)
-        { 
+        {
             try
             {
-                Raca r = await _context.Racas
+                Raca r = await _context.Raca
                     .FirstOrDefaultAsync(rBusca => rBusca.IdRaca == id);
-            
+
                 return Ok(r);
             }
             catch (Exception ex)
@@ -32,19 +32,19 @@ namespace TCC_AmoPatas.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        
+
 
         [HttpGet("GetAll")]
         public async Task<IActionResult> Get()
-        { 
+        {
             try
             {
-                List<Raca> lista = await _context.Racas.ToListAsync();
+                List<Raca> lista = await _context.Raca.ToListAsync();
                 return Ok(lista);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);                
+                return BadRequest(ex.Message);
             }
         }
 
@@ -53,7 +53,7 @@ namespace TCC_AmoPatas.Controllers
         public async Task<IActionResult> Add(Raca novaRaca){
             try
             {
-                await _context.Racas.AddAsync(novaRaca);
+                await _context.Raca.AddAsync(novaRaca);
                 await _context.SaveChangesAsync();
 
                 return Ok(String.Format("Raca: {0} adicionada com sucesso", novaRaca.IdRaca));
@@ -70,7 +70,7 @@ namespace TCC_AmoPatas.Controllers
         {
             try
             {
-                _context.Racas.Update(novoRaca);
+                _context.Raca.Update(novoRaca);
                 int linhasAfetadas = await _context.SaveChangesAsync();
 
                 return Ok(String.Format("Atualizado com sucesso ! linhas Afetadas: {0} ", linhasAfetadas));
@@ -86,12 +86,12 @@ namespace TCC_AmoPatas.Controllers
         {
             try
             {
-                Raca rRemover = await _context.Racas
+                Raca rRemover = await _context.Raca
                     .FirstOrDefaultAsync(r => r.IdRaca == id);
 
-                _context.Racas.Remove(rRemover);
+                _context.Raca.Remove(rRemover);
                 int linhasAfetadas = await _context.SaveChangesAsync();
-                
+
                 return Ok(String.Format("id {0} da Raca, deletado com sucesso ! linhas Afetadas: {1} ", id, linhasAfetadas));
             }
             catch (Exception ex)
