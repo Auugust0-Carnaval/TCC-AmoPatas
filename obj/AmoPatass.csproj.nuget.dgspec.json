@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\TCC-AmoPatas\\AmoPatass.csproj": {}
+    "C:\\Users\\Junior\\Desktop\\Projetos\\TCC-AmoPatas\\AmoPatass.csproj": {}
   },
   "projects": {
-    "C:\\TCC-AmoPatas\\AmoPatass.csproj": {
+    "C:\\Users\\Junior\\Desktop\\Projetos\\TCC-AmoPatas\\AmoPatass.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\TCC-AmoPatas\\AmoPatass.csproj",
+        "projectUniqueName": "C:\\Users\\Junior\\Desktop\\Projetos\\TCC-AmoPatas\\AmoPatass.csproj",
         "projectName": "AmoPatass",
-        "projectPath": "C:\\TCC-AmoPatas\\AmoPatass.csproj",
-        "packagesPath": "C:\\Users\\siang\\.nuget\\packages\\",
-        "outputPath": "C:\\TCC-AmoPatas\\obj\\",
+        "projectPath": "C:\\Users\\Junior\\Desktop\\Projetos\\TCC-AmoPatas\\AmoPatass.csproj",
+        "packagesPath": "C:\\Users\\Junior\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Junior\\Desktop\\Projetos\\TCC-AmoPatas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\siang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Junior\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
