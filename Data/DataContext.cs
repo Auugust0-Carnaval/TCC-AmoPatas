@@ -16,7 +16,7 @@ namespace AmoPatass.Data
          public DbSet<AnimalFoto> AnimalFoto { get; set; }//Pega as classes em models e transforma em tabelas
          public DbSet<PessoaFoto> PessoaFoto {get; set;}//Classe PessoaFoto vira tabela PessoasFotos
          public DbSet<Categoria> Categoria { get; set; }
-         public DbSet<Interessado> Interessado { get; set; }
+         public DbSet<Interessado> Interessados { get; set; }
          public DbSet<Pessoa> Pessoa { get; set; }
          public DbSet<Pet> Pet { get; set; }
          public DbSet<Porte> Porte { get; set; }
