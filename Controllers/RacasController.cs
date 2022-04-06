@@ -56,7 +56,7 @@ namespace TCC_AmoPatas.Controllers
                 await _context.Raca.AddAsync(novaRaca);
                 await _context.SaveChangesAsync();
 
-                return Ok(String.Format("Raca: {0} adicionada com sucesso", novaRaca.IdRaca));
+                return Ok(String.Format("Raça {0} adicionada com sucesso", novaRaca.dsRaca));
 
             }
             catch (Exception ex)
