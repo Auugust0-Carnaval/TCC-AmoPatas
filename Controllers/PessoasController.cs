@@ -2,7 +2,23 @@ using AmoPatass;
 using AmoPatass.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 
+using Microsoft.AspNetCore.Mvc;
+using AmoPatass.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using AmoPatass.Models;
+using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
+
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmoPatass
 {
@@ -20,6 +36,83 @@ namespace AmoPatass
             _context = context; //inicialização do atributo
             _httpContextoAccessor = httpContextAccessor;
         }
+
+        private void CriarHash(string password, out byte[] PasswordHash, out byte[] PasswordSalt)
+        {
+            using (var crip = new System.Security.Cryptography.HMACSHA512()) // metodo de criptografia 
+            {
+                PasswordSalt = crip.Key; // chave principal da criptografia 
+                PasswordHash =  crip.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            }
+        }
+
+        public async Task<bool> PessoaExistente(string nome)
+        {
+            if(await _context.Pessoa.AnyAsync(x => x.nmPessoa.ToLower() == nome.ToLower()))
+            {
+                  return true;
+
+            }  
+            else
+            {
+                return false;
+
+            } 
+        }
+
+        [AllowAnonymous]
+        [HttpPost("Cadastrar")]
+
+        public async Task<IActionResult> CadastrarPessoa(Pessoa Usuario)
+        {
+            try
+            {
+               if(await PessoaExistente(Usuario.nmPessoa))  
+               throw new System.Exception(string.Format("Usuario:{0} já existente",Usuario.nmPessoa));
+
+               CriarHash(Usuario.Password, out byte[] hash, out byte[]  salt);
+               Usuario.Password = string.Empty;
+               Usuario.PasswordHash = hash;
+               Usuario.PasswordSalt = salt;
+
+               await _context.Pessoa.AddAsync(Usuario);
+               await _context.SaveChangesAsync();
+
+               return Ok(string.Format("{0} adicionada com sucesso <3",Usuario.nmPessoa));
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSingle(int id)
@@ -55,21 +148,7 @@ namespace AmoPatass
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> Add(Pessoa novaPessoa){
-            try
-            {
-                await _context.Pessoa.AddAsync(novaPessoa);
-                await _context.SaveChangesAsync();
-
-                return Ok(String.Format("Pessoa: {0} adicionada com sucesso", novaPessoa.IdPessoa));
-
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+    
 
         [HttpPut]
         public async Task<IActionResult> Update(Pessoa novoPessoa)
