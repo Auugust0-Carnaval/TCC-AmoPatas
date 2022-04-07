@@ -44,6 +44,9 @@ namespace TCC_AmoPatas.Controllers
         //     }
         // }
 
+
+
+
         //   [HttpGet]
         //   public async Task<IActionResult> GetAll(Preferencias sq)
         // {
@@ -91,32 +94,32 @@ namespace TCC_AmoPatas.Controllers
 
 
 
-        //exbir a lista de pets de acordo com o filtro
-          // [HttpGet("{id}")] //buscar pelo id informado
+        // exbir a lista de pets de acordo com o filtro
+        //   [HttpGet("{id}")] //buscar pelo id informado
 
-          //    public async Task<IActionResult> addPreferencia(int id)
-          //    {
-          //        try
-          //        {
-          //           List<Pet> phLista = new List<Pet>();
+        //      public async Task<IActionResult> addPreferencia(int id)
+        //      {
+        //          try
+        //          {
+        //             List<Pet> phLista = new List<Pet>();
 
-          //            // List<Pet> pt= await _context.Pet.ToListAsync();
-          //              phLista = await _context.Pet
-          //             .Include(c => c.IdCategoria)
-          //             .Include(s => s.IdSexo )
-          //             .Include(pr => pr.IdPorte)
-          //             .Include(r => r.IdRaca)
-          //             .Include(p => p.Pets)
+        //              // List<Pet> pt= await _context.Pet.ToListAsync();
+        //                phLista = await _context.Pet
+        //               .Include(c => c.IdCategoria)
+        //               .Include(s => s.IdSexo )
+        //               .Include(pr => pr.IdPorte)
+        //               .Include(r => r.IdRaca)
+        //               .Include(p => p.Pets)
 
-          //             .Where(p => p.IdAnimal == id).ToListAsync();
-          //             return Ok(phLista);
-          //        }
-          //        catch (System.Exception ex)
-          //        {
-          //             return BadRequest(ex.Message);
+        //               .Where(p => p.IdAnimal == id).ToListAsync();
+        //               return Ok(phLista);
+        //          }
+        //          catch (System.Exception ex)
+        //          {
+        //               return BadRequest(ex.Message);
 
-          //        }
-          //    }
+        //          }
+        //      }
 
 
           // [HttpGet("{id}")]
@@ -144,41 +147,41 @@ namespace TCC_AmoPatas.Controllers
 
 
           //Buscar preferencias de acordo com o pet  --- post preferencia
-         [HttpGet("{sqPreferencia}")]                               //Preferencia sq
-          public async Task<IActionResult> GetSingle( int sq)
-          {
-            try
-            {
-              //List<Pet> p = await _context.Pet.ToListAsync();
-               Pet p = await _context.Pet.FirstOrDefaultAsync(pet => pet.IdCategoria == sq);
+        //  [HttpGet("{sqPreferencia}")]                               //Preferencia sq
+        //   public async Task<IActionResult> GetSingle( int sq)
+        //   {
+        //     try
+        //     {
+        //       //List<Pet> p = await _context.Pet.ToListAsync();
+        //        Pet p = await _context.Pet.FirstOrDefaultAsync(pet => pet.IdCategoria == sq);
 
-                if(p.IdCategoria == sq) //if(p.IdCategoria == sq)
-                {
-
-
-                }
-                  return Ok(p);
-
-                 if(p.IdPorte == sq)
-                {
-                     return Ok(p);
-                    throw new System.Exception("Porte");
-                }
-
-                 if(p.IdRaca == sq)
-                {
-                     return Ok(p);
-                    throw new System.Exception("raca");
-                }
+        //         if(p.IdCategoria == sq) //if(p.IdCategoria == sq)
+        //         {
 
 
-            }
+        //         }
+        //           return Ok(p);
 
-             catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-          }
+        //          if(p.IdPorte == sq)
+        //         {
+        //              return Ok(p);
+        //             throw new System.Exception("Porte");
+        //         }
+
+        //          if(p.IdRaca == sq)
+        //         {
+        //              return Ok(p);
+        //             throw new System.Exception("raca");
+        //         }
+
+
+        //     }
+
+        //      catch (Exception ex)
+        //     {
+        //         return BadRequest(ex.Message);
+        //     }
+        //   }
 
 
 
@@ -210,14 +213,6 @@ namespace TCC_AmoPatas.Controllers
 
 
        //Filtrar uma preferencia por algum criterio e retornar o pets daqueles criterios
-
-        //   [HttpGet]
-
-        //  public IActionResult Get(Categoria c )
-        //  {
-        //    List<Categoria> listaBusca = Categoria.FirstOrDefault( c => c.dsCategoria == c.sqPreferencia );
-        //     return Ok(listaBusca);
-        //  }
 
 
 
