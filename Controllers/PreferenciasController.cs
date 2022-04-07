@@ -258,12 +258,6 @@ namespace TCC_AmoPatas.Controllers
         //     }
         // }
 
-        // [HttpPost]
-        // public async Task<IActionResult> Add(Preferencia sq){
-        // {
-        //     pet.Add(sq);
-        //     return Ok(pet);
-        // }
 
 
 

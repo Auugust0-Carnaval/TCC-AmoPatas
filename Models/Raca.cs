@@ -6,7 +6,6 @@ namespace AmoPatass
     public class Raca
     {
         public int IdRaca { get; set; }
-
         public int IdCategoria { get; set; }
 
         [ForeignKey("IdCategoria")]

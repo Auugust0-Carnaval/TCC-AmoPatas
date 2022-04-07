@@ -6,24 +6,19 @@ namespace AmoPatass.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-
-
         }
 
-
-
-
-         public DbSet<AnimalFoto> AnimalFoto { get; set; }//Pega as classes em models e transforma em tabelas
+         public DbSet<AnimalFoto> AnimaisFoto { get; set; }//Pega as classes em models e transforma em tabelas
          public DbSet<PessoaFoto> PessoaFoto {get; set;}//Classe PessoaFoto vira tabela PessoasFotos
          public DbSet<Categoria> Categoria { get; set; }
-         public DbSet<Interessado> Interessado { get; set; }
+         public DbSet<Interessado> Interessados { get; set; }
          public DbSet<Pessoa> Pessoa { get; set; }
          public DbSet<Pet> Pet { get; set; }
          public DbSet<Porte> Porte { get; set; }
          public DbSet<Preferencia> Preferencia { get; set; }
          public DbSet<Raca> Raca { get; set; }
          public DbSet<Sexo> Sexo { get; set; }
-         public DbSet<Situacao> Situacoe { get; set; }
+         public DbSet<Situacao> Situacao { get; set; }
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
          {
@@ -42,21 +37,14 @@ namespace AmoPatass.Data
             modelBuilder.Entity<Interessado>()
                 .HasKey(i => new{i.IdPessoa, i.idAnimal});
 
-
             modelBuilder.Entity<Pessoa>()
-
-
                 .HasKey(p => new{p.IdPessoa});
-
-
-
 
             modelBuilder.Entity<Pet>()
                 .HasKey(pt => new{pt.IdAnimal});
 
             modelBuilder.Entity<Raca>()
                 .HasKey(r => new{r.IdRaca});
-
 
             modelBuilder.Entity<Sexo>()
                 .HasKey(s => new{s.IdSexo});

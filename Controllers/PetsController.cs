@@ -2,12 +2,17 @@ using System.Collections.Generic;
 using AmoPatass;
 using AmoPatass.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Data.SqlClient;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-
+using System.Security.Claims;
 namespace TCC_AmoPatas
 {
     [ApiController]//declara essa classe como controller
@@ -24,6 +29,7 @@ namespace TCC_AmoPatas
             _httpContextoAccessor = httpContextAccessor;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         //GetAll = nome do metodo
         public async Task<IActionResult> GetAll()
@@ -66,11 +72,12 @@ namespace TCC_AmoPatas
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(Pet novoAnimal){
+        public async Task<IActionResult> Add(Pet novoAnimal)
+        {
             try
             {
                 await _context.Pet.AddAsync(novoAnimal);
-                await _context.SaveChangesAsync();
+              int linhasAfetadas = await _context.SaveChangesAsync();
 
                 return Ok(String.Format("Animal: {0} adicionado com sucesso", novoAnimal.nmAnimal));
             }
