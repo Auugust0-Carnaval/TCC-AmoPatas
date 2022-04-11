@@ -16,6 +16,10 @@ namespace AmoPatass
         public string UfAnimal { get; set; }
         public int Idade { get; set; }
 
+
+        public List<Preferencia> prefencias { get; set; }
+
+
         //Siangui arrumo aqui  <3
         public int IdPorte { get; set; }//fk
         public int IdPessoa { get; set; }//

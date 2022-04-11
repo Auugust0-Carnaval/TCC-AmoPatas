@@ -6,6 +6,7 @@ namespace AmoPatass.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
+
         }
 
          public DbSet<AnimalFoto> AnimaisFoto { get; set; }//Pega as classes em models e transforma em tabelas
@@ -22,6 +23,7 @@ namespace AmoPatass.Data
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
          {
+
 
             modelBuilder.Entity<AnimalFoto>()
                 .HasOne<Pet>()

@@ -20,7 +20,7 @@ namespace AmoPatass
         //senha de acesso
         public byte[] PasswordHash { get; set; } // comeco da criptografia
         public byte[] PasswordSalt { get; set; } // final da criptografia
-        
+
         //password
         [NotMapped] // anotação que essa propriedade não sera uma coluna na base de dados (Notmapped) = nâo mapeada
         public string Password {get; set;} // senha de acesso
