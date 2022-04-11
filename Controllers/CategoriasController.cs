@@ -1,16 +1,18 @@
 using System.Data;
 using AmoPatass.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace AmoPatass
 {
+    [Authorize]
+    [EnableCors("CorsApi")]
     [ApiController] //tranforma classe em uma controller de acesso ao banco de dados
     [Route("[controller]")]
-    public class CategoriasController : ControllerBase // heranca da classe ControllerBase para ter as mesma caracteristicas e metodos
+    public class CategoriasController : Controller // heranca da classe ControllerBase para ter as mesma caracteristicas e metodos
     {
         private readonly DataContext _context;
         private readonly IHttpContextAccessor _httpContextoAccessor;
@@ -39,7 +41,7 @@ namespace AmoPatass
             }
         }
 
-        [HttpPost] // metodo de inserção/publicação etc etc
+        [HttpPost("InserirCategoria")] // metodo de inserção/publicação etc etc
         public async Task<IActionResult> AddAsync(Categoria newCategoria)
         {
             try
