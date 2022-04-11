@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using TCC_AmoPatas;
 
 namespace AmoPatass
 {
@@ -17,24 +18,53 @@ namespace AmoPatass
 
         public IConfiguration Configuration { get; }
 
+        readonly string CorsPolicy = "_corsPolicy";
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
+
+            services.AddCors();
+            var key = Encoding.ASCII.GetBytes(Settings.Secret);
+
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("ConexaoSomee")));
 
             services.AddControllers();
+            /*services.AddCors(options => 
+            {
+                options.AddPolicy(CorsPolicy,
+                    builder => builder.WithOrigins("http://localhost:4200", "http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod());
+            });*/
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(x => 
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
             .AddJwtBearer(options =>
             {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true; 
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false 
+                };
+
+
+
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
                         .GetBytes(Configuration.GetSection("ConfiguracaoToken:Chave").Value)),
                     ValidateIssuer = false,
-                    ValidateAudience = false
+                    ValidateAudience = false    
                 };
             });
 
@@ -54,6 +84,13 @@ namespace AmoPatass
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+             app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+             );
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -65,6 +102,12 @@ namespace AmoPatass
 
             app.UseRouting();
 
+            app.UseCors(x => x
+
+                .AllowAnyHeader()
+                .AllowAnyOrigin()
+                .AllowAnyMethod()); //libera qualquer chamada de consumo da API
+
             app.UseAuthentication();
 
             app.UseAuthorization();
@@ -73,6 +116,8 @@ namespace AmoPatass
             {
                 endpoints.MapControllers();
             });
+
+            
         }
     }
 }
