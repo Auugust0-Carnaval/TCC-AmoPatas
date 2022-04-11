@@ -7,9 +7,7 @@ namespace AmoPatass
     {
         [Key]
         public int IdAnimalFoto { get; set; }
-        public Pet Pets { get; set; }
         public int IdAnimal { get; set; }
         public byte[] ftAnimal { get; set; }
-
     }
 }
