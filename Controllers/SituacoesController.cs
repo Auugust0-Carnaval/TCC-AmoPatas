@@ -22,7 +22,11 @@ namespace TCC_AmoPatas.Controllers
         {
             List<Situa>
 
-        }*/
+
+        /* Desenvolvimento
+        *  obs: Construção de Situações
+        */
+
 
     }
 }

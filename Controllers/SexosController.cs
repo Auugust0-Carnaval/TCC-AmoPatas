@@ -26,7 +26,7 @@ namespace TCC_AmoPatas.Controllers
             try
             {
                 List<Sexo> sex = await _context.Sexo.ToListAsync(); // acessa o contexto do banco de dados e adiciona em uma lista
-                if(sex.Count == 0) // se não tiver nehuma informação na busca é declarado uma mensagem
+                if(sex.Count.Equals(0)) // se não tiver nenhuma informação na busca é declarado uma mensagem
                 {
                     throw new System.Exception("Não foi encotrado nenhum 'Sexo'"); // mensagem de badrequest (status:400)
                 }

@@ -11,7 +11,7 @@ namespace AmoPatass
         [ForeignKey("IdPessoa")]
 
         public int sqPreferencia { get; set; }
-        
+
         [ForeignKey("IdPorte")]
         public int IdPorte { get; set; }
 
@@ -20,7 +20,7 @@ namespace AmoPatass
 
         public DateTime mtPreferencia { get; set; }
 
-        [ForeignKey("IdCategoria")] 
+        [ForeignKey("IdCategoria")]
         public int IdCategoria { get; set; }
 
         //raça
@@ -29,8 +29,5 @@ namespace AmoPatass
 
         // [ForeignKey("IdRaca")]
         // public Racas Racas { get; set; }
-
-
-
     }
 }

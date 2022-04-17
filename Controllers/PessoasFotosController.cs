@@ -14,6 +14,5 @@ namespace TCC_AmoPatas.Controllers
             _context = context; //inicialização do atributo
             _httpContextoAccessor = httpContextAccessor;
         }
-        
     }
 }

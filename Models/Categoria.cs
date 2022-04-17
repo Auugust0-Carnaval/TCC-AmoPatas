@@ -8,6 +8,5 @@ namespace AmoPatass
         public string  dsCategoria { get; set; }
 
 
-
     }
 }
