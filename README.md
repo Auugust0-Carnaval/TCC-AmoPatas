@@ -18,6 +18,6 @@
     Clique no Link abaixo para ir para o front
 </p>
 
-<a href="https://github.com/Auugust0-Carnaval/TCC-AmoPatasFrontend">
+<a href="https://github.com/Auugust0-Carnaval/TCC-AmoPatasFrontend.git">
     <h3>TCC-AmoPatasFrontend<h3>
 </a>
