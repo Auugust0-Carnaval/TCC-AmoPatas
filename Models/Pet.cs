@@ -23,6 +23,5 @@ namespace AmoPatass
         public int IdTutor { get; set; }//
         public int IdSexo { get; set; }//
         public int IdDoador { get; set; }  //
-
   }
 }

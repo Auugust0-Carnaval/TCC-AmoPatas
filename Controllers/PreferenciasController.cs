@@ -31,8 +31,6 @@ namespace TCC_AmoPatas.Controllers
         {
             try
             {
-
-
                 List<Preferencia> sqLista = await _context.Preferencia.ToListAsync();
 
                 //Retorno da Lista de preferencias

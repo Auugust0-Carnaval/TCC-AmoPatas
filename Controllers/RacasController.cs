@@ -34,7 +34,7 @@ namespace TCC_AmoPatas.Controllers
         }
 
 
-        [HttpGet("GetAll")]
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
             try

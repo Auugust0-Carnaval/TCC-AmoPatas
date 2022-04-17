@@ -100,7 +100,7 @@ namespace TCC_AmoPatas
                 string oldPet = Convert.ToString(cmd.ExecuteScalar());
 
                 _context.Pet.Update(newPet);
-                int linhasAfetadas = await _context.SaveChangesAsync();
+                 await _context.SaveChangesAsync();
 
                 return Ok(String.Format("{0} teve dados alterados",oldPet));
             }

@@ -19,7 +19,7 @@ namespace TCC_AmoPatas.Controllers
             _httpContextoAccessor = httpContextAccessor;
         }
 
-
+        // [Alow]
         [HttpGet]
         public async Task<IActionResult> GetallAsync()
         {

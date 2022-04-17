@@ -18,37 +18,30 @@ namespace AmoPatass
 
         public IConfiguration Configuration { get; }
 
-        readonly string CorsPolicy = "_corsPolicy";
+        // readonly string CorsPolicy = "_corsPolicy";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-
-            services.AddCors();
-            var key = Encoding.ASCII.GetBytes(Settings.Secret);
+            
 
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("ConexaoSomee")));
 
             services.AddControllers();
-            /*services.AddCors(options => 
-            {
-                options.AddPolicy(CorsPolicy,
-                    builder => builder.WithOrigins("http://localhost:4200", "http://localhost:4200")
-                    .AllowAnyHeader()
-                    .AllowAnyMethod());
-            });*/
 
+            var key = Encoding.ASCII.GetBytes(Settings.Secret);
+              
             services.AddAuthentication(x => 
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
+            
             .AddJwtBearer(options =>
             {
                 options.RequireHttpsMetadata = false;
                 options.SaveToken = true; 
-                options.TokenValidationParameters = new TokenValidationParameters()
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
@@ -58,14 +51,14 @@ namespace AmoPatass
 
 
 
-                options.TokenValidationParameters = new TokenValidationParameters
+                /*options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
                         .GetBytes(Configuration.GetSection("ConfiguracaoToken:Chave").Value)),
                     ValidateIssuer = false,
                     ValidateAudience = false    
-                };
+                };*/
             });
 
             services.AddSwaggerGen(c =>
@@ -85,31 +78,31 @@ namespace AmoPatass
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-             app.UseCors(builder => builder
+            /* app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-             );
+             );*/
+
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AmoPatass v1"));
+                // app.UseSwagger();
+                // app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AmoPatass v1"));
+            }
+            else
+            {
+                app.UseExceptionHandler("Home/Error");
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseCors(x => x
-
-                .AllowAnyHeader()
-                .AllowAnyOrigin()
-                .AllowAnyMethod()); //libera qualquer chamada de consumo da API
-
             app.UseAuthentication();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

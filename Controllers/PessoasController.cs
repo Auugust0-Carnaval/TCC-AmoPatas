@@ -117,7 +117,7 @@ namespace AmoPatass
             }
         }
 
-        [AllowAnonymous]
+        /*[AllowAnonymous]
         [HttpPost("Autenticar")]
         public async Task<IActionResult> AutenticarPessoa([FromBody] Pessoa credenciais)
         {
@@ -137,7 +137,7 @@ namespace AmoPatass
                 throw;
             }
             
-        }
+        }*/
     }
     
 }
