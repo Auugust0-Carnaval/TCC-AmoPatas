@@ -16,5 +16,9 @@ namespace TCC_AmoPatas.Controllers
             _httpContextoAccessor = httpContextAccessor;
         }
 
+        /* Desenvolvimento
+        *  obs: Construção de Situações
+        */
+
     }
 }

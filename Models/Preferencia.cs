@@ -23,15 +23,11 @@ namespace AmoPatass
         [ForeignKey("IdCategoria")]
         public int IdCategoria { get; set; }
 
-
         //raça
 
         // public int IdRaca { get; set; }
 
         // [ForeignKey("IdRaca")]
         // public Racas Racas { get; set; }
-
-
-
     }
 }

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TCC_AmoPatas.Controllers
 
-{
+{ 
   [ApiController]
   [Route("[Controller]")]
   public class PreferenciasController : ControllerBase
@@ -88,9 +88,9 @@ namespace TCC_AmoPatas.Controllers
 
     // }
 
-
+    
     [HttpPost("PreferenciaPorCategoria")]
-
+    
     public IActionResult PorCategoria(List<ClasseEnum> cat)
     {
       List<Pet> petCategoria = new List<Pet> { };
