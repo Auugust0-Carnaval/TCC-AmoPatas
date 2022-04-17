@@ -5,10 +5,11 @@
 ## ~ Obs: 
 ### integrantes do grupo
 <ul>
+    <li>Sarah</li>
     <li>Carlus</li>
     <li>Siangue</li>
-    <li>Sarah</li>
     <li>Nilton</li>
+    <li>Augusto</li>
 </ul>
 
 ## ~ Nosso front-end: 
