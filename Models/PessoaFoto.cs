@@ -6,7 +6,11 @@ namespace AmoPatass
     public class PessoaFoto
     {
         public int IdPessoa { get; set; }
-        public Pessoa Pessoas { get; set; }
         public byte[] ftPessoa { get; set; }
+        public string Descricao { get; set; }
+        public string contentType { get; set; }
+
+
+
     }
 }
