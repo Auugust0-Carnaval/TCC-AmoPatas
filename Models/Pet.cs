@@ -6,7 +6,7 @@ namespace AmoPatass
 {
     public class Pet
     {
-      [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+      // [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int IdAnimal { get; set; }//pk
         public string nmAnimal { get; set; }
         public string dsAnimal { get; set; }
@@ -17,7 +17,7 @@ namespace AmoPatass
         public int Idade { get; set; }
 
 
-        public List<Preferencia> prefencias { get; set; }
+        // public List<Preferencia> prefencias { get; set; }
 
 
         //Siangui arrumo aqui  <3
@@ -25,23 +25,23 @@ namespace AmoPatass
         public int IdPessoa { get; set; }//
 
 
-        [ForeignKey("IdRaca")]
+        // [ForeignKey("IdRaca")]
         public int IdRaca { get; set; }//
 
 
-        [ForeignKey("IdCategoria")]
+        // [ForeignKey("IdCategoria")]
         public int IdCategoria { get; set; }//
 
-        [ForeignKey("IdSituacao")]
+        // [ForeignKey("IdSituacao")]
         public int IdSituacao { get; set; }//
 
-         [ForeignKey("IdTutor")]
+        //  [ForeignKey("IdTutor")]
         public int IdTutor { get; set; }//
 
-         [ForeignKey(" IdSexo")]
+        //  [ForeignKey(" IdSexo")]
         public int IdSexo { get; set; }//
 
-         [ForeignKey("IdDoador")]
+        //  [ForeignKey("IdDoador")]
         public int IdDoador { get; set; }  //
 
   }

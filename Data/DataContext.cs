@@ -58,7 +58,7 @@ namespace AmoPatass.Data
             modelBuilder.Entity<Preferencia>
             (pr =>
                 {
-                    pr.HasNoKey();
+                    pr.HasNoKey(); // sem chave hasnokey = sem id/pk
                 }
             );
 

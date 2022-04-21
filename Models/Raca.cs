@@ -8,7 +8,7 @@ namespace AmoPatass
         public int IdRaca { get; set; }
         public int IdCategoria { get; set; }
 
-        [ForeignKey("IdCategoria")]
+        // [ForeignKey("IdCategoria")]
 
         public Categoria Categoria { get; set; }
         public string dsRaca { get; set; }

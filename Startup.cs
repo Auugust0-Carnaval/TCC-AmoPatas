@@ -1,6 +1,7 @@
 using System.Text;
 using AmoPatass.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
@@ -18,7 +19,7 @@ namespace AmoPatass
 
         public IConfiguration Configuration { get; }
 
-        // readonly string CorsPolicy = "_corsPolicy";
+         readonly string CorsPolicy = "_corsPolicy";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -31,35 +32,26 @@ namespace AmoPatass
 
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
               
-            services.AddAuthentication(x => 
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
+            // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSingleton<IConfiguration>(Configuration);
             
-            .AddJwtBearer(options =>
-            {
-                options.RequireHttpsMetadata = false;
-                options.SaveToken = true; 
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false 
-                };
+            services.AddAuthentication
+                 (JwtBearerDefaults.AuthenticationScheme)
+                 .AddJwtBearer(options =>
+                  {
+                     options.TokenValidationParameters = new TokenValidationParameters
+                     {
+                       ValidateIssuer = true,
+                       ValidateAudience = true,
+                       ValidateLifetime = true,
+                       ValidateIssuerSigningKey = true,
 
-
-
-                /*options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
-                        .GetBytes(Configuration.GetSection("ConfiguracaoToken:Chave").Value)),
-                    ValidateIssuer = false,
-                    ValidateAudience = false    
-                };*/
-            });
+                       ValidIssuer = Configuration["Jwt:Issuer"],
+                       ValidAudience = Configuration["Jwt:Audience"],
+                       IssuerSigningKey = new SymmetricSecurityKey
+                       (Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                     };
+                 });
 
             services.AddSwaggerGen(c =>
             {
@@ -78,11 +70,11 @@ namespace AmoPatass
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            /* app.UseCors(builder => builder
+             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-             );*/
+             );
 
 
             if (env.IsDevelopment())
@@ -93,7 +85,7 @@ namespace AmoPatass
             }
             else
             {
-                app.UseExceptionHandler("Home/Error");
+               // app.UseExceptionHandler("Home/Error");
                 app.UseHsts();
             }
 
@@ -104,13 +96,12 @@ namespace AmoPatass
 
             app.UseAuthentication();
             app.UseAuthorization();
+            // app.UseMvc();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
-            
         }
     }
 }

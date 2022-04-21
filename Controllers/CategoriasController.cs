@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AmoPatass
 {
-    [Authorize]
-    [EnableCors("CorsApi")]
+    // [Authorize]
+    // [EnableCors("CorsApi")]
     [ApiController]
     [Route("[controller]")]
     public class CategoriasController : Controller // herança da classe ControllerBase para ter as mesma caracteristicas e metodos
@@ -24,7 +24,7 @@ namespace AmoPatass
         }
 
         [AllowAnonymous] //pode ter acesso a esse método sendo anonimato
-        [HttpGet("GetAll")]
+        [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
             try
@@ -105,6 +105,46 @@ namespace AmoPatass
             {
                 return BadRequest(ex.Message); // exibe mensagem definia no try(system.Exception)
             }
+        }
+
+
+        //TODO BUSCA PELO ID
+
+        // [HttpGet("{id}")]
+        // [AllowAnonymous] // acesso anonimato
+        // public async Task<IActionResult> GetIdAync(int id)
+        // {
+        //     try
+        //     {
+        //         Categoria categoria = await _context.Categoria.FirstOrDefaultAsync(p => p.IdCategoria == id);
+
+        //         if (categoria.IdCategoria == null)
+        //             throw new System.Exception("Não possui nenhum porte de busca");
+        //         return Ok(categoria);
+        //     }
+        //     catch (System.Exception ex)
+        //     {
+        //         return BadRequest(ex.Message);
+        //     }
+
+        // }
+
+        //TODO BUSCAR PELO NOME CACTEGORY
+
+        [HttpGet]
+        [Route("{name}")]
+        // [AllowAnonymous]
+        public async Task<IActionResult> GetName(string name)
+        {
+            //GAMBIARRRA
+
+            String stconection = "Data Source= workstation id=DB-DS-AMOPATAS.mssql.somee.com;packet size=4096;user id=saaugustocarnaval;pwd=123456789;data source=DB-DS-AMOPATAS.mssql.somee.com;persist security info=False;initial catalog=DB-DS-AMOPATAS";
+            SqlConnection connection = new SqlConnection(stconection);
+            string sql = string.Format("SELECT dsCategoria FROM Categoria WHERE dsCategoria ='{0}'", name);
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            string nameCategory = Convert.ToString(cmd.ExecuteScalar());
+            return Ok(nameCategory);
         }
     }
 }

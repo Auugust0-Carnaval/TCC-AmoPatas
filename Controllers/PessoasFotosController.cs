@@ -1,3 +1,4 @@
+using AmoPatass;
 using AmoPatass.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,5 +15,46 @@ namespace TCC_AmoPatas.Controllers
             _context = context; //inicialização do atributo
             _httpContextoAccessor = httpContextAccessor;
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetFoto()
+        {
+            try
+            {
+                List<PessoaFoto> pf = _context.PessoaFoto.ToList();
+                if (pf.Count == 0)
+                    throw new System.Exception("Nenhuma foto encontrada : (");
+                return Ok(pf);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        //METODO DE INSERIR IMAGEN NO BANCO
+
+        // [HttpPost]
+        // public async Task<IActionResult> UploadImage(IList<IFormFile> arquivos)
+        // {
+        //     IFormFile imagemCarregada = arquivos.FirstOrDefault();
+        //     if(imagemCarregada == null)
+        //     {
+        //         MemoryStream ms = new MemoryStream();
+        //         imagemCarregada.OpenReadStream().CopyTo(ms);
+
+        //         arquiv
+        //     }
+
+        // }
+
+
+
+
+
+
+
+
     }
 }

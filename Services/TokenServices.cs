@@ -10,18 +10,18 @@ namespace TCC_AmoPatas.Services
 {
     public static class TokenServices
     {
-        public static string GenerateToken(User usuario)
+        public static string GenerateToken(Pessoa pessoa)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.Name, usuario.username),
-                    new Claim(ClaimTypes.Role,usuario.Role)
-                }),
+                // Subject = new ClaimsIdentity(new[]
+                // {
+                //     new Claim(ClaimTypes.Email, pessoa.Email)
+                //      new Claim(ClaimTypes.)
+                // }),
 
                 Expires = DateTime.UtcNow.AddHours(8), // o token esta definifo para durar 8 horas
                     SigningCredentials = new SigningCredentials
@@ -33,6 +33,8 @@ namespace TCC_AmoPatas.Services
             return tokenHandler.WriteToken(token); // retorna o token na funcão
 
         }
+
+        
         
     }
 }
