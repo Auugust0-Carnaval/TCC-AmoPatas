@@ -10,7 +10,7 @@ namespace AmoPatass
 
         // [ForeignKey("IdCategoria")]
 
-        public Categoria Categoria { get; set; }
+        // public Categoria Categoria { get; set; }
         public string dsRaca { get; set; }
     }
 }

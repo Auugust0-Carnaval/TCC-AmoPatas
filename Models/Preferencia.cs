@@ -8,19 +8,19 @@ namespace AmoPatass
     {
         public int IdPessoa { get; set; }
 
-        [ForeignKey("IdPessoa")]
+        // [ForeignKey("IdPessoa")]
 
         public int sqPreferencia { get; set; }
 
-        [ForeignKey("IdPorte")]
+        // [ForeignKey("IdPorte")]
         public int IdPorte { get; set; }
 
-        [ForeignKey("IdSexo")]
+        // [ForeignKey("IdSexo")]
         public int IdSexo { get; set; }
 
         public DateTime mtPreferencia { get; set; }
 
-        [ForeignKey("IdCategoria")]
+        // [ForeignKey("IdCategoria")]
         public int IdCategoria { get; set; }
 
         //raça
