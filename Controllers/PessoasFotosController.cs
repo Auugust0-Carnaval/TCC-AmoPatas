@@ -35,19 +35,43 @@ namespace TCC_AmoPatas.Controllers
 
         //METODO DE INSERIR IMAGEN NO BANCO
 
-        // [HttpPost]
-        // public async Task<IActionResult> UploadImage(IList<IFormFile> arquivos)
-        // {
-        //     IFormFile imagemCarregada = arquivos.FirstOrDefault();
-        //     if(imagemCarregada == null)
-        //     {
-        //         MemoryStream ms = new MemoryStream();
-        //         imagemCarregada.OpenReadStream().CopyTo(ms);
+        [HttpPost]
+        public IActionResult UploadImage(IList<IFormFile> arquivos)
+        {
+            try
+            {
+                IFormFile imagemCarregada = arquivos.FirstOrDefault();
+                if (imagemCarregada == null)
+                {
+                    MemoryStream ms = new MemoryStream();
+                    imagemCarregada.OpenReadStream().CopyTo(ms);
 
-        //         arquiv
-        //     }
+                    PessoaFoto foto = new PessoaFoto()
+                    {
+                        Descricao = imagemCarregada.FileName,
+                        ftPessoa = ms.ToArray(),
+                        contentType = imagemCarregada.ContentType
+                    };
+                    _context.PessoaFoto.Add(foto);
+                    _context.SaveChanges();
 
-        // }
+                }
+                return Ok("Foto adicionada com sucesso :)");
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("{id}")] //BUSCA FOTO PELO IdPessoaFoto
+
+        public IActionResult GetIdFoto(int id)
+        {
+            PessoaFoto pf = _context.PessoaFoto.FirstOrDefault(p => p.IdPessoa == id);
+
+            return File(pf.ftPessoa, pf.contentType);
+        }
 
 
 
